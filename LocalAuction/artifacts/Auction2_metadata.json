@@ -269,10 +269,10 @@
 			]
 		},
 		"LocalAuction.sol": {
-			"keccak256": "0x89de9eb9563aeb2082289a6a79eb98318121d6ab5bd5c03ad32e03b9c0177777",
+			"keccak256": "0x8406b1534e14e07f2a07f2a25e57be8d80437a91e86e2271ffe263ce1f6d4dab",
 			"urls": [
-				"bzz-raw://17c142d9258b18f5cd4f0728ef0d8d24f40cf87d12391a0b78731a3cc2cddb13",
-				"dweb:/ipfs/QmTjPm6cCfb4YHh2aRi54zsZk4Mxea5FzNPaa6y3FjcoXg"
+				"bzz-raw://40bf9dd3d00e7ba82af7ea0803cbda2db5456d757d5fb8fe56036349e372493d",
+				"dweb:/ipfs/Qmd74Un6c7pEud9f2o2FdRADK42hUtjFRJdHt6P5YVG2q7"
 			]
 		}
 	},
