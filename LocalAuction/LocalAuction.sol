@@ -31,7 +31,7 @@ contract Auction2{
     }
     
     function bid() public{
-        
+        //CHajkjfhjkhdajkfdjkthe 
     }
 
     
