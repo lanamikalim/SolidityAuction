@@ -8,11 +8,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "biddingTime",
-						"type": "uint256"
-					},
-					{
 						"internalType": "address payable",
 						"name": "beneficiary",
 						"type": "address"
@@ -26,11 +21,48 @@
 						"internalType": "uint256",
 						"name": "_nftId",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxbids",
+						"type": "uint256"
 					}
 				],
 				"name": "Auction",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "allBids",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "amountOfBids",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -60,17 +92,47 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "bidAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					}
+				],
 				"name": "bid",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
 				"name": "closeAuction",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxBids",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -173,7 +235,7 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {
-				"closeAuction()": {
+				"bid(uint256,address)": {
 					"notice": "Note: input address of dog nft is invalid when constructing SimpleAuction) nft: 0x13066ee900a8c4e2c9cd7ce0096adf9b907d0cff "
 				}
 			},
@@ -182,7 +244,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"LocalAuction.sol": "Auction2"
+			"LocalAuction/LocalAuction.sol": "Auction2"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -268,11 +330,11 @@
 				"dweb:/ipfs/QmcsVgLgzWdor3UnAztUkXKNGcysm1MPneWksF72AvnwBx"
 			]
 		},
-		"LocalAuction.sol": {
-			"keccak256": "0x8406b1534e14e07f2a07f2a25e57be8d80437a91e86e2271ffe263ce1f6d4dab",
+		"LocalAuction/LocalAuction.sol": {
+			"keccak256": "0xcdcd8433573c987c577f30eadc61ba43a261cb76dbdebba3a1084c9f11696ce4",
 			"urls": [
-				"bzz-raw://40bf9dd3d00e7ba82af7ea0803cbda2db5456d757d5fb8fe56036349e372493d",
-				"dweb:/ipfs/Qmd74Un6c7pEud9f2o2FdRADK42hUtjFRJdHt6P5YVG2q7"
+				"bzz-raw://b9cb7f58e5b8dce1e06793da345c6b6af3edeab73863c8eaad8e9ced47a8c5bf",
+				"dweb:/ipfs/QmeRF8NBqeQn3nQjsr9DC3SwFt8WTFLbgvvJKmM5jagAeo"
 			]
 		}
 	},
