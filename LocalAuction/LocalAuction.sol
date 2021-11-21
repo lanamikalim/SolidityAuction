@@ -13,6 +13,7 @@ contract Auction2{
     uint public maxBids;
     uint public amountOfBids;
     uint256 public buyNowPrice;
+    bool public auctionIsOpen = true; //Flag for testing to check if closeAuction is reached
 
      function Auction(address nftowner, address _nft, uint _nftId, uint maxbids, uint256 buyNow) public{
         nft = IERC721(_nft);
@@ -25,10 +26,13 @@ contract Auction2{
     }
  
      
-    //lets user bid an amount, if amount of bids is greater than 
-    //presumably working
+    //checks if bid is at the buyNowPrice, if so, ends auction
+    //Otherwise, adds to map of addresses + allBids
+    //Calls updateTopdBid 
+    //if bid is reaches the max, endAuction
      function bid(uint bidAmount, address bidder) public{
         if(bidAmount == buyNowPrice){
+            
             closeAuction();
         }
         updateTopBid(bidAmount,bidder);
@@ -39,7 +43,9 @@ contract Auction2{
         }
     }
     
-    //working
+    // currently working
+    //Checks if bidAmount is greater than the current topBid,
+    //if true, updates given paramters as teh new topdBid and TopBidder
     function updateTopBid(uint bidAmount,address bidder) public{
         if(bidAmount >topBid){
             topBid = bidAmount;
@@ -48,7 +54,10 @@ contract Auction2{
         
         
     }
+    
+    //Ends Auction, calls transferNFT
     function closeAuction() public{
+        auctionIsOpen = false;
         transferNFT(nftOwner);
     }
     
@@ -58,7 +67,7 @@ contract Auction2{
     
     //current source of error: transferring nft that is not owned
     function transferNFT(address owner) public payable{
-        //Okay this is now working yay
+      
         nft.safeTransferFrom(owner,topBidder,nftId);
 
     }

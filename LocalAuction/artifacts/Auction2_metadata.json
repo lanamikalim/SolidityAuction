@@ -85,6 +85,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "auctionIsOpen",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "beneficiaryAddress",
 				"outputs": [
 					{
@@ -357,10 +370,10 @@
 			]
 		},
 		"LocalAuction/LocalAuction.sol": {
-			"keccak256": "0xf3195738fd6ceb13e883cfeb09595fa4c796f8112254122ce636c703bab5810c",
+			"keccak256": "0x7978b352678f06e791d15193348970bf10cd46fae4e30c351350e2ee727a59a0",
 			"urls": [
-				"bzz-raw://02bcb6e707adb8e69a1cbfec436cee4aabd96f9b1d6a5446008e83519ed92d94",
-				"dweb:/ipfs/Qmb4igpwtD8C6kEHuV4DZYB9bpby1v4SLeyeqpLZMRGrQN"
+				"bzz-raw://8e66869e4196ba64eec13af90af9e21a85a09defde786ff12e9b2d95e15ee09c",
+				"dweb:/ipfs/QmYoPzaEYrpQzo8kqCHyRUFZvAXNTpWNxPjeV4nXp3Yafw"
 			]
 		}
 	},
