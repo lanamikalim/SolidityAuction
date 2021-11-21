@@ -8,8 +8,8 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address payable",
-						"name": "beneficiary",
+						"internalType": "address",
+						"name": "nftowner",
 						"type": "address"
 					},
 					{
@@ -25,6 +25,11 @@
 					{
 						"internalType": "uint256",
 						"name": "maxbids",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "buyNow",
 						"type": "uint256"
 					}
 				],
@@ -110,13 +115,20 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "buyNowPrice",
+				"outputs": [
 					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "closeAuction",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -163,10 +175,10 @@
 			},
 			{
 				"inputs": [],
-				"name": "owner",
+				"name": "nftOwner",
 				"outputs": [
 					{
-						"internalType": "address payable",
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -225,6 +237,24 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "bidAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					}
+				],
+				"name": "updateTopBid",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -234,11 +264,7 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"bid(uint256,address)": {
-					"notice": "Note: input address of dog nft is invalid when constructing SimpleAuction) nft: 0x13066ee900a8c4e2c9cd7ce0096adf9b907d0cff "
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -331,10 +357,10 @@
 			]
 		},
 		"LocalAuction/LocalAuction.sol": {
-			"keccak256": "0xcdcd8433573c987c577f30eadc61ba43a261cb76dbdebba3a1084c9f11696ce4",
+			"keccak256": "0xf3195738fd6ceb13e883cfeb09595fa4c796f8112254122ce636c703bab5810c",
 			"urls": [
-				"bzz-raw://b9cb7f58e5b8dce1e06793da345c6b6af3edeab73863c8eaad8e9ced47a8c5bf",
-				"dweb:/ipfs/QmeRF8NBqeQn3nQjsr9DC3SwFt8WTFLbgvvJKmM5jagAeo"
+				"bzz-raw://02bcb6e707adb8e69a1cbfec436cee4aabd96f9b1d6a5446008e83519ed92d94",
+				"dweb:/ipfs/Qmb4igpwtD8C6kEHuV4DZYB9bpby1v4SLeyeqpLZMRGrQN"
 			]
 		}
 	},

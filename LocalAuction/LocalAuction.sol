@@ -12,20 +12,25 @@ contract Auction2{
     mapping (address => uint) public allBids;
     uint public maxBids;
     uint public amountOfBids;
+    uint256 public buyNowPrice;
 
-     function Auction(address payable beneficiary, address nftowner, address _nft, uint _nftId, uint maxbids) public{
-        beneficiaryAddress = beneficiary;
+     function Auction(address nftowner, address _nft, uint _nftId, uint maxbids, uint256 buyNow) public{
         nft = IERC721(_nft);
         nftId = _nftId;
        // auctionClose = block.timestamp + biddingTime;
         testnum = 0;
-        nftOwner= nftOwner;
+        nftOwner= nftowner;
         maxBids = maxbids;
+        buyNowPrice = buyNow;
     }
  
      
     //lets user bid an amount, if amount of bids is greater than 
+    //presumably working
      function bid(uint bidAmount, address bidder) public{
+        if(bidAmount == buyNowPrice){
+            closeAuction();
+        }
         updateTopBid(bidAmount,bidder);
         allBids[bidder] = bidAmount;
         amountOfBids++;
@@ -34,24 +39,27 @@ contract Auction2{
         }
     }
     
-    function updateTopBid(uint bidAmount,address bidder){
+    //working
+    function updateTopBid(uint bidAmount,address bidder) public{
         if(bidAmount >topBid){
+            topBid = bidAmount;
             topBidder = bidder;
         }
         
+        
     }
     function closeAuction() public{
-        require(block.timestamp >= auctionClose);
-        transferNFT();
+        transferNFT(nftOwner);
     }
     
     
 //Setup Note: -run  remixd -s . --remix-ide https://remix.ethereum.org/ in github directory before connecting to localhost
 //Runtime notes: -deploy thingy - create nft with the contract address as the owner -use constructor on contract, put my address as beneficiaryAddress -transferNFT with contract address as owner
     
-    function transferNFT() public payable{
+    //current source of error: transferring nft that is not owned
+    function transferNFT(address owner) public payable{
         //Okay this is now working yay
-        nft.safeTransferFrom(nftOwner,beneficiaryAddress,nftId);
+        nft.safeTransferFrom(owner,topBidder,nftId);
 
     }
     
