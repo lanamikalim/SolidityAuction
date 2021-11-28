@@ -3,7 +3,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract Auction2{
     address payable public beneficiaryAddress;
     address public nftOwner;
-    uint public auctionClose;
+    uint public auctionCloseTime;
     uint256 public testnum;
      IERC721 public nft;
     uint public nftId;
@@ -13,24 +13,24 @@ contract Auction2{
     uint public maxBids;
     uint public amountOfBids;
     uint256 public buyNowPrice;
-    bool public auctionIsOpen = true; //Flag for testing to check if closeAuction is reached
+    bool public auctionIsOpen = true; //Flag for testing to check if closeAuction is reached//check if Auction is open
 
-     function Auction(address nftowner, address _nft, uint _nftId, uint maxbids, uint256 buyNow) public{
+    function Auction(address nftowner, address _nft, uint _nftId, uint maxBids, uint256 buyNow) public{
         nft = IERC721(_nft);
         nftId = _nftId;
-       // auctionClose = block.timestamp + biddingTime;
         testnum = 0;
         nftOwner= nftowner;
-        maxBids = maxbids;
         buyNowPrice = buyNow;
     }
- 
-     
+
+
     //checks if bid is at the buyNowPrice, if so, ends auction
     //Otherwise, adds to map of addresses + allBids
     //Calls updateTopdBid 
-    //if bid is reaches the max, endAuction
+    //MAX BID FUNCTIONALITY: if bid is reaches the max, endAuction
      function bid(uint bidAmount, address bidder) public{
+         require(block.timestamp < auctionCloseTime);
+        require(auctionIsOpen == true);
         if(bidAmount == buyNowPrice){
             
             closeAuction();
@@ -38,9 +38,21 @@ contract Auction2{
         updateTopBid(bidAmount,bidder);
         allBids[bidder] = bidAmount;
         amountOfBids++;
+        
         if(amountOfBids == maxBids){
           closeAuction();
+       }
+    }
+
+    //Anybody but the highest bidder can withdraw their bid
+    //The bid money is returned to bidder once withdrew
+    function withdraw(address withdrawer,uint bidAmount) public{
+        if(bidAmount != topBid && withdrawer != topBidder){
+            uint bid = allBids[withdrawer];
+            allBids[withdrawer] = 0;
+            payable(withdrawer).transfer(bid);
         }
+
     }
     
     // currently working
@@ -71,5 +83,4 @@ contract Auction2{
         nft.safeTransferFrom(owner,topBidder,nftId);
 
     }
-    
-}
+ }   
